@@ -1,0 +1,19 @@
+[package]
+name = "rook-android"
+description = "Android application shell for the Rook player"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "main"
+crate-type = ["cdylib"]
+
+[dependencies]
+winit = { workspace = true, features = ["android-native-activity"] }
+
+[lints]
+workspace = true
