@@ -24,11 +24,9 @@ jobs:
         with:
           targets: aarch64-linux-android
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android NDK
+      - name: Install Android SDK packages
         run: |
+          yes | sdkmanager --licenses
           sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
           echo "NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
           echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
@@ -39,9 +37,12 @@ jobs:
       - name: Build APK
         run: cargo apk build --release -p rook-android
 
+      - name: Locate APK
+        run: find target -type f -name "*.apk" -print
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: rook-android-apk
-          path: target/android-artifacts/**/*.apk
+          path: target/**/*.apk
           if-no-files-found: error
