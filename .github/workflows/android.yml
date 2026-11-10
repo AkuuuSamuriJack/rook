@@ -41,8 +41,11 @@ jobs:
       - name: Build APK
         run: cargo apk build -p rook-android
 
-      - name: Locate APK
-        run: find target -type f -name "*.apk" -print
+       - name: Inspect APK
+        run: |
+          APK=target/debug/apk/rook-player.apk
+          $ANDROID_HOME/build-tools/35.0.0/aapt dump badging "$APK"
+          $ANDROID_HOME/build-tools/35.0.0/apksigner verify --verbose "$APK"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
