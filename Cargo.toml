@@ -259,3 +259,5 @@ inherits = "release"
 lto = "fat"
 codegen-units = 1
 
+[lints.rust]
+unsafe_code = "allow"
