@@ -38,7 +38,7 @@ impl ApplicationHandler for RookAndroid {
 }
 
 #[unsafe(no_mangle)]
-pub fn android_main(app: AndroidApp) {
+pub extern "C" fn android_main(app: AndroidApp) {
     let mut builder = EventLoop::builder();
     builder.with_android_app(app);
 
