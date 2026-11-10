@@ -1,3 +1,5 @@
+mod platform;
+
 use winit::{
     application::ApplicationHandler,
     event::WindowEvent,
@@ -39,6 +41,8 @@ impl ApplicationHandler for RookAndroid {
 
 #[unsafe(no_mangle)]
 pub extern "C" fn android_main(app: AndroidApp) {
+    platform::install().expect("Failed to install Android platform");
+
     let mut builder = EventLoop::builder();
     builder.with_android_app(app);
 
