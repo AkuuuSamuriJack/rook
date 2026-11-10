@@ -1,7 +1,12 @@
 [workspace]
 resolver = "3"
-members = ["crates/*", "apps/*"]
-exclude = ["apps/build.rs"]
+members = [
+    "crates/*",
+    "apps/rook-player",
+    "apps/rook-cli",
+    "apps/rook-android",
+    "apps/xtask",
+]
 
 [workspace.package]
 version = "0.4.0"
