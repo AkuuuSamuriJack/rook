@@ -17,3 +17,12 @@ winit = { workspace = true, features = ["android-native-activity"] }
 
 [lints]
 workspace = true
+
+[package.metadata.android]
+package = "com.aku.rookplayer"
+apk_name = "rook-player"
+build_targets = ["aarch64-linux-android"]
+
+[package.metadata.android.sdk]
+min_sdk_version = 26
+target_sdk_version = 35
