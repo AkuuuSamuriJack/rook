@@ -31,7 +31,7 @@ rook-platform.workspace = true
 wgpu.workspace = true
 glam.workspace = true
 pollster.workspace = true
-anyhow.workspace = true }
+anyhow.workspace = true
 
 [lints]
 workspace = true
